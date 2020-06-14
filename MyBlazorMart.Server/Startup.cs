@@ -37,7 +37,7 @@ namespace MyBlazorMart.Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<InventoryService>();
+                endpoints.MapGrpcService<InventoryService>().EnableGrpcWeb();
 
                 endpoints.MapGet("/", async context =>
                 {

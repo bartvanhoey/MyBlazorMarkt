@@ -20,7 +20,7 @@ namespace MyBlazorMart.Server
             .Where(p => p.Name.StartsWith(request.SearchQuery, StringComparison.CurrentCultureIgnoreCase))
             .Select(p => new AutoCompleteItem { EAN = p.EAN, Name = p.Name })
             .Take(10);
-        autoCompleteReply.Items.Add(matches);
+        autoCompleteReply.Items.AddRange(matches);
       }
       return Task.FromResult(autoCompleteReply);
     }
