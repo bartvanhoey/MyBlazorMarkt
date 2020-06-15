@@ -217,21 +217,21 @@ footer button:hover, .overlay button:hover {
     align-items: center;
 }
 
-    .overlay .content {
-        background-color: var(--header-footer-bg);
-        color: white;
-        display: inline-block;
-        margin: auto;
-        padding: var(--space-3) var(--space-4);
-        border-radius: 5px;
-        box-shadow: 0 2px 4px black;
-        text-align: center;
-    }
+.overlay .content {
+    background-color: var(--header-footer-bg);
+    color: white;
+    display: inline-block;
+    margin: auto;
+    padding: var(--space-3) var(--space-4);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px black;
+    text-align: center;
+}
 
-    .overlay p {
-        margin: var(--space-3);
-        margin-top: var(--space-1);
-    }
+.overlay p {
+    margin: var(--space-3);
+    margin-top: var(--space-1);
+}
 
 .yellow-flash {
     animation: YellowFlash 1s ease-out;
