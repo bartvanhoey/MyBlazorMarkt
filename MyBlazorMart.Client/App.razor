@@ -1,12 +1,23 @@
+@inherits AppBase
+
 <header>
   <SearchBox OnItemChosen="HandleOnItemChosen" />
 </header>
 
 
-
-
-@code {
-  public void HandleOnItemChosen(){
-    
+<main>
+  @foreach (var row in Cart.Rows)
+  {
+      <CartRowDisplay @key="row.Key" Data="row" />
   }
+</main>
+
+
+@if (Cart.HasAnyProducts) {
+    <footer>
+        <button class="remove-item" @onclick="EnterRemoveMode">✗ Remove item</button>
+        <div>Total: <span class="price">@Cart.GrandTotal.ToString("c")</span></div>
+        <button>💳 Checkout</button>
+    </footer>
 }
+

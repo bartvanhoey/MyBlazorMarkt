@@ -11,6 +11,7 @@ using Grpc.Net.Client.Web;
 using Grpc.Net.Client;
 using System.Runtime.Serialization;
 using MyBlazorMart.Server;
+using MyBlazorMart.Client.State;
 
 namespace MyBlazorMart.Client
 {
@@ -31,6 +32,7 @@ namespace MyBlazorMart.Client
                 
             });
 
+            builder.Services.AddScoped<Cart>();
 
             await builder.Build().RunAsync();
         }
