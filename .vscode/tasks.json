@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MyBlazorMart.Client/MyBlazorMart.Client.csproj",
+                "${workspaceFolder}/BlazorMart.Server/BlazorMart.Server.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/MyBlazorMart.Client/MyBlazorMart.Client.csproj",
+                "${workspaceFolder}/BlazorMart.Server/BlazorMart.Server.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/MyBlazorMart.Client/MyBlazorMart.Client.csproj",
+                "${workspaceFolder}/BlazorMart.Server/BlazorMart.Server.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
