@@ -1,0 +1,24 @@
+@inherits AppBase
+@inject Cart Cart   
+
+hello
+
+@* <header>
+    <SearchBox OnItemChosen="HandleItemChosen" />
+</header>
+
+<main>
+    @foreach (var row in Cart.Rows)
+    {
+        <CartDisplay @key="row.Key" Data="row" />
+    }
+</main>
+
+@if(Cart.HasAnyProducts)
+{
+    <footer>
+        <button class="remove-item" >Remove Item</button>
+        <div>Total: <span class="price">@Cart.GrandTotal.ToString("c")</span></div>
+        <button> Checkout</button>
+    </footer>
+} *@
