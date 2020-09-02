@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMart.Client", "Blazor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMart.Server", "BlazorMart.Server\BlazorMart.Server.csproj", "{73ED8B78-1711-4D24-A133-CBF6A7A067D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMart.Test", "BlazorMart.Test\BlazorMart.Test.csproj", "{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,5 +58,17 @@ Global
 		{73ED8B78-1711-4D24-A133-CBF6A7A067D7}.Release|x64.Build.0 = Release|Any CPU
 		{73ED8B78-1711-4D24-A133-CBF6A7A067D7}.Release|x86.ActiveCfg = Release|Any CPU
 		{73ED8B78-1711-4D24-A133-CBF6A7A067D7}.Release|x86.Build.0 = Release|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Debug|x64.Build.0 = Debug|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Debug|x86.Build.0 = Debug|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Release|x64.ActiveCfg = Release|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Release|x64.Build.0 = Release|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{7CDE31F1-AC87-40DA-9069-1BB34C0523A8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

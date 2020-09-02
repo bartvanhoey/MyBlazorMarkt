@@ -11,6 +11,17 @@
 `dotnet new grpc -o BlazorMart.Server`
 `dotnet sln add BlazorMart.Server/BlazorMart.Server.csproj`
 
+Add xUnit test project to solution
+`dotnet new xunit -o BlazorMart.Test`
+`dotnet sln add BlazorMart.Test/BlazorMart.Test.csproj`
+
+Add reference to the Client project to the BlazorMart.Test project
+`dotnet add reference ../BlazorMart.Client/BlazorMart.Client.csproj`
+
+Add packages to the BlazorMart.Test project
+dotnet add package Microsoft.AspNetCore.Components.Testing -v 0.0.1-preview
+dotnet add package moq
+
 4 Add reference to BlazorMart.Server.csproj file
 `dotnet-grpc add-file Protos/inventory.proto`
 

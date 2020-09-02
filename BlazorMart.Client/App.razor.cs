@@ -8,7 +8,7 @@ namespace BlazorMart.Client
   {
     [Inject] public Cart Cart { get; set; }
 
-    bool isInRemoveMode;
+    protected bool isInRemoveMode;
 
     protected void EnterRemoveMode()
     {

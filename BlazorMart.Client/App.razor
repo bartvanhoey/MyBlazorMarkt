@@ -10,6 +10,7 @@
         <CartRowDisplay @key="row.Key" Data="row" />
     }
 </main>
+
 @if (Cart.HasAnyProducts)
 {
     <footer>
@@ -17,4 +18,11 @@
         <div>Total: <span class="price">@Cart.GrandTotal.ToString("c")</span></div>
         <button>💳   Checkout</button>
     </footer>
+}
+
+@if (isInRemoveMode)
+{
+    <Overlay>
+        <p>Scan an item to remove</p>
+    </Overlay>
 }
