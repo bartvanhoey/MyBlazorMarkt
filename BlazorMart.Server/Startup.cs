@@ -17,6 +17,7 @@ namespace BlazorMart.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddGrpc();
         }
 
@@ -28,11 +29,16 @@ namespace BlazorMart.Server
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
+            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseRouting();
+            app.UseGrpcWeb();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<InventoryService>();
+                endpoints.MapGrpcService<InventoryService>().EnableGrpcWeb();
 
                 endpoints.MapGet("/", async context =>
                 {

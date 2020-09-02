@@ -1,46 +1,43 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlazorMart.Client.State;
 using BlazorMart.Server;
 using Microsoft.AspNetCore.Components;
-using static BlazorMart.Server.Inventory;
 
 namespace BlazorMart.Client.Components
 {
   public class SearchBoxBase : ComponentBase
   {
-    [Inject] public InventoryClient InventoryClient { get; set; }
     [Parameter] public EventCallback<string> OnItemChosen { get; set; }
-    protected bool isInRemoveMode;
+    [Inject] public Inventory.InventoryClient InventoryClient { get; set; }
+    protected List<AutoCompleteItem> autoCompleteItems = new List<AutoCompleteItem>();
     protected string searchText;
-    protected List<AutoCompleteItem> autocompleteItems = new List<AutoCompleteItem>();
 
-
-
-    protected async Task AddItemAsync()
-    {
-      var ean = searchText.ToLower();
-      searchText = null;
-      autocompleteItems.Clear();
-      await OnItemChosen.InvokeAsync(ean);
-    }
-
-    protected async Task UpdateAutoCompleteAsync(ChangeEventArgs eventArgs)
+    protected async Task UpdateAutoComplete(ChangeEventArgs eventArgs)
     {
       searchText = (string)eventArgs.Value;
-      var matchingItem = autocompleteItems.FirstOrDefault(i => i.Name == searchText);
+      var matchingItem = autoCompleteItems.FirstOrDefault(p => p.Name == searchText);
       if (matchingItem != null)
       {
         searchText = matchingItem.EAN;
-        await AddItemAsync();
+        await AddItem();
       }
       else
       {
         var request = new AutoCompleteRequest { SearchQuery = searchText };
         var reply = await InventoryClient.AutoCompleteAsync(request);
-        autocompleteItems = reply.Items.ToList();
+        autoCompleteItems = reply.Items.ToList();
       }
+    }
+
+    protected async Task AddItem()
+    {
+        var ean = searchText.ToLower();
+        searchText = null;
+        autoCompleteItems.Clear();
+        await OnItemChosen.InvokeAsync(ean);
     }
   }
 }

@@ -1,8 +1,8 @@
 ﻿@import url('normalize.css');
 @import url('fonts.css');
 
-app { animation: AppAnimation 10s ease-in; }
-.logo { animation: LogoAnimation 10s cubic-bezier(0.71, 0, 0.26, 1.01); }
+app { animation: AppAnimation 2s ease-in; }
+.logo { animation: LogoAnimation 2s cubic-bezier(0.71, 0, 0.26, 1.01); }
 
 * { box-sizing: border-box; }
 

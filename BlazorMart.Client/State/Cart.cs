@@ -11,13 +11,46 @@ namespace BlazorMart.Client.State
   {
     private readonly Inventory.InventoryClient _inventoryClient;
     private readonly List<CartRow> _rows = new List<CartRow>();
+
     public IReadOnlyList<CartRow> Rows => _rows;
+
+
     public bool HasAnyProducts => _rows.Any(r => r.Product != null);
-    public decimal GrandTotal => Rows.Where(r => r.Product != null).Sum(r => r.Quantity * r.Product.Price / 100);
+
+    public decimal GrandTotal => Rows
+        .Where(r => r.Product != null)
+        .Sum(r => r.Quantity * r.Product.Price / 100);
 
     public Cart(Inventory.InventoryClient inventoryClient)
     {
       _inventoryClient = inventoryClient;
+    }
+
+    public async Task AddItemAsync(string ean)
+    {
+      var existingRow = Rows.SingleOrDefault(r => r.EAN == ean);
+      if (existingRow != null)
+      {
+        existingRow.Quantity++;
+      }
+      else
+      {
+        var cartRow = new CartRow { EAN = ean, Quantity = 1 };
+        _rows.Add(cartRow);
+        for (int i = 0; i < 20; i++)
+        {
+          try
+          {
+            cartRow.Product = await FetchProductData(ean);
+            break;
+          }
+          catch (RpcException)
+          {
+            await Task.Delay(5000);
+          }
+        }
+        if (cartRow.Product == null) _rows.Remove(cartRow);
+      }
     }
 
     private async Task<Product> FetchProductData(string ean)
@@ -27,32 +60,19 @@ namespace BlazorMart.Client.State
       return reply.Product;
     }
 
-    public async Task AddItemAsync(string ean)
+    public void RemoveItem(string ean)
     {
       var existingRow = Rows.SingleOrDefault(r => r.EAN == ean);
-      if (existingRow != null) existingRow.Quantity++;
-      else
+      if (existingRow != null)
       {
-        var row = new CartRow { EAN = ean, Quantity = 1 };
-        _rows.Add(row);
-
-        for (int i = 0; i < 20; i++)
+        existingRow.Quantity--;
+        if (existingRow.Quantity <= 0)
         {
-          try
-          {
-            row.Product = await FetchProductData(ean);
-            break;
-          }
-          catch (RpcException) { await Task.Delay(5000); }
+          _rows.Remove(existingRow);
         }
-
-        if (row.Product == null) _rows.Remove(row);
       }
 
-
     }
-
-
 
   }
 }
